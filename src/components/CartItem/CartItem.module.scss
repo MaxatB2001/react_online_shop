@@ -1,0 +1,37 @@
+.card {
+  margin-top: 15px;
+  display: flex;
+  &__image {
+    width: 140px;
+  }
+  &__body {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    &__top {
+      display: flex;
+      justify-content: space-between;
+      &__price {
+        font-weight: 600;
+        margin-left: 8rem;
+      }
+    }
+    &__bot {
+      display: flex;
+      justify-content: space-between;
+      &__buttons {
+        cursor: pointer;
+        font-size: 17px;
+        &__delete:hover {
+          color: #ff8f00;
+        }
+        &__bookmark {
+          margin-left: 15px;
+        }
+        &__bookmark:hover {
+          color: #ff8f00;
+        }
+      }
+    }
+  }
+}
