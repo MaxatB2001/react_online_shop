@@ -15,26 +15,40 @@ const CatalogModal = observer(() => {
     return (
         catalog.showCatalog && <div onClick={() => catalog.setShowCatalog(!catalog.showCatalog)} className={classes.dialog}>
             <div className={classes.dialog__content}>
+                <h2 className="d-flex justify-content-center">Каталог</h2>
                 <ListGroup variant="flush">
                 {product.parentCategories.map(c =>
                     <ListGroup.Item
                         onClick={() => navigate(CATALOG_ROUTE + '/' + c.slug)}
-                        style={{backgroundColor: 'transparent'}}
+                        style={{backgroundColor: 'transparent', cursor: "pointer"}}
                         onMouseOver={() => {
                             setActiveCategory(c)
                             setShowSubModal(true)
                         }}
                         key={c.id}
                     >
+                        <div className={classes.dialog__content__item}>
+                            <span style={{marginRight: "10px"}}><i className={c.icon}></i></span>
                             {c.title}
+                        </div>
                     </ListGroup.Item>
                 )}
                 </ListGroup>
             </div>
             {showSubModal && <div className={classes.dialog__content__sub}>
-                {activeCategory.subCategories.map(category =>
-                    <div key={category.id}>{category.title}</div>
-                )}
+                <ListGroup style={{marginTop: "46px"}} variant="flush">
+                    {activeCategory.subCategories.map(category =>
+                        <ListGroup.Item
+                            onClick={() => navigate(CATALOG_ROUTE + '/' + category.slug)}
+                            style={{backgroundColor: 'transparent', cursor: "pointer"}}
+                            key={category.id}
+                        >
+                            <div className={classes.dialog__content__item}>
+                                {category.title}
+                            </div>
+                        </ListGroup.Item>
+                    )}
+                </ListGroup>
             </div>}
         </div>
     );

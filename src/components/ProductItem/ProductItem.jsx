@@ -25,7 +25,7 @@ const ProductItem = ({product}) => {
             </div>
             <div className={classes.product__description}>
                 <span className={classes.product__description__bookmark}><i className="bi bi-bookmark-plus"></i></span>
-                <h2 style={{marginBottom: "5px"}}>Lenovo 33b</h2>
+                <h2 style={{marginBottom: "5px"}}>{product.name}</h2>
                 <i style={{color: "orange"}} className="bi bi-star-fill"></i>
                 <span style={{marginLeft: "5px"}}>{starAvg.toFixed(2)}</span>
                 <i style={{marginLeft: "15px"}} className="bi bi-chat"></i>

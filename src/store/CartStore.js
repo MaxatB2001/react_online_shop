@@ -70,4 +70,13 @@ export default class CartStore {
         return this._items
     }
 
+    checkProductInCart(product) {
+        const exist = this._items.filter(i => i.product.id === product.id)
+        if (exist.length) {
+            return true
+        } else {
+            return  false
+        }
+    }
+
 }

@@ -1,17 +1,20 @@
 import React, {useContext, useEffect, useMemo, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {fetchProduct} from "../../queries/ProductsApi";
 import {Button, Col, Container, Nav, Row} from "react-bootstrap";
 import ReviewList from "../../components/ReviewtList/ReviewList";
 import {countAvgStars} from "../../utils/helpers";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index";
+import {CART_ROUTE} from "../../utils/consts";
 
 const ProductPage = observer(() => {
+    const navigate = useNavigate()
     const [product, setProduct] = useState({product_features: [], reviews: []})
     const {cart} = useContext(Context)
     const [selectedNav, setSelectedNav] = useState("features")
     const {slug} = useParams()
+    const isProductInCart = cart.checkProductInCart(product)
     const addToCart = () => {
         const item = {
             product,
@@ -46,7 +49,12 @@ const ProductPage = observer(() => {
                         :
                         <p>Нет в наличии</p>
                     }
-                    <Button style={{color: "white"}} onClick={() => addToCart()} size="lg" variant={"warning"}><span className="bi bi-cart-plus"></span> В корзину</Button>
+                    {isProductInCart
+                        ?
+                        <Button onClick={() => navigate(CART_ROUTE)} variant={"outline-warning"}>Перейти в корзину</Button>
+                        :
+                        <Button style={{color: "white"}} onClick={() => addToCart()} size="lg" variant={"warning"}><span className="bi bi-cart-plus"></span> В корзину</Button>
+                    }
                 </Col>
             </Row>
             <Row className="mt-4">
@@ -76,7 +84,7 @@ const ProductPage = observer(() => {
                         {product.product_features.map(f =>
                         <tr key={f.id}>
                             <td>{f.title}</td>
-                            <td>{f.description}</td>
+                            <td><span style={{marginLeft: "100px"}}>{f.description}</span></td>
                         </tr>
                             )}
                         </tbody>

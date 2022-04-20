@@ -3,8 +3,11 @@ import {observer} from "mobx-react-lite";
 import CartItem from "../components/CartItem/CartItem";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {Context} from "../index";
+import {useNavigate} from "react-router-dom";
+import {CHECKOUT_ROUTE} from "../utils/consts";
 
 const Cart = observer(() => {
+    const navigate = useNavigate()
     const {cart} = useContext(Context)
     return (
         <Container>
@@ -23,7 +26,7 @@ const Cart = observer(() => {
                     <span style={{fontSize: '25px', fontWeight: "700"}}>{cart.cartTotalPrice().toFixed(2)}</span>
                     <span style={{fontSize: '25px', marginLeft: "5px"}}>₽</span>
                     </div>
-                        <Button style={{color: 'white', marginTop: '10px'}} variant={"warning"}>Перейти к оформлению</Button>
+                        <Button onClick={() => navigate(CHECKOUT_ROUTE)} style={{color: 'white', marginTop: '10px'}} variant={"warning"}>Перейти к оформлению</Button>
                     </div>
                 </Col>
             </Row>

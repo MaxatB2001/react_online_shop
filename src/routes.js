@@ -2,10 +2,10 @@ import Admin from "./pages/Admin";
 import {
     ADMIN_ROUTE,
     CART_ROUTE,
-    CATALOG_ROUTE,
+    CATALOG_ROUTE, CHECKOUT_ROUTE,
     HOME_ROUTE,
     LOGIN_ROUTE,
-    PRODUCT_ROUTE,
+    PRODUCT_ROUTE, PROFILE_ROUTE,
     REGISTRATION_ROUTE
 } from "./utils/consts";
 import Catalog from "./pages/Catalog";
@@ -13,12 +13,18 @@ import Cart from "./pages/Cart";
 import Auth from "./pages/Auth/Auth";
 import Home from "./pages/Home/Home";
 import ProductPage from "./pages/ProductPage/ProductPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 
 export const authRoutes = [
     {
         path: ADMIN_ROUTE,
         Component: <Admin/>
     },
+    {
+        path: PROFILE_ROUTE,
+        Component: <ProfilePage/>
+    }
 ]
 
 export const publicRoutes = [
@@ -45,6 +51,10 @@ export const publicRoutes = [
     {
         path: HOME_ROUTE,
         Component: <Home/>
+    },
+    {
+        path: CHECKOUT_ROUTE,
+        Component: <CheckoutPage/>
     }
 
 ]

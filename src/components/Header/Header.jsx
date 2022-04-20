@@ -6,7 +6,7 @@ import classes from './Header.module.scss'
 import {Link, NavLink} from "react-router-dom";
 import {Context} from "../../index";
 import {Button, Container, Form, FormControl, Nav, Navbar} from "react-bootstrap";
-import {CART_ROUTE, HOME_ROUTE, LOGIN_ROUTE} from "../../utils/consts";
+import {CART_ROUTE, HOME_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE} from "../../utils/consts";
 import {observer} from "mobx-react-lite";
 
 const Header = observer(() => {
@@ -31,12 +31,20 @@ const Header = observer(() => {
                     <div className={classes.headerLinks}>
                         <nav className={classes.navHeader}>
                             <ul className={classes.navHeader__list}>
-                                <li className={classes.navHeader__link}>
-                                    <Link className={classes.link} to={LOGIN_ROUTE}>
+                                {user.isAuth ? <li className={classes.navHeader__link}>
+                                    <Link className={classes.link} to={PROFILE_ROUTE}>
                                         <img style={{width: '20px', height: '20px'}} src={user_icon} alt="img"/>
-                                        <div>Войти</div>
+                                        <div>Профиль</div>
                                     </Link>
                                 </li>
+                                :
+                                    <li className={classes.navHeader__link}>
+                                        <Link className={classes.link} to={LOGIN_ROUTE}>
+                                            <img style={{width: '20px', height: '20px'}} src={user_icon} alt="img"/>
+                                            <div>Войти</div>
+                                        </Link>
+                                    </li>
+                                }
                                 {user.isAuth && <li className={classes.navHeader__link}>
                                     <Link className={classes.link} to={CART_ROUTE}>
                                         <img style={{width: '20px', height: '20px'}} src={bookmark} alt="img"/>

@@ -8,7 +8,7 @@ const AppRouter = () => {
     const {user} = useContext(Context)
     return (
         <Routes>
-            {user.isAdmin && authRoutes.map(route =>
+            {user.isAuth && authRoutes.map(route =>
                 <Route key={route.path} path={route.path} element={route.Component}/>
             )}
             {publicRoutes.map(route =>
