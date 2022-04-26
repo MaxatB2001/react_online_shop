@@ -11,7 +11,7 @@ const Cart = observer(() => {
     const {cart} = useContext(Context)
     return (
         <Container>
-            <h1 >Моя корзина</h1>
+            <Row className={"mt-4"}><h1 >Моя корзина</h1></Row>
             <Row className="d-flex justify-content-center">
                 <Col md={6}>
                     {cart.items.map(i =>

@@ -10,8 +10,12 @@ export const fetchParentCategories = async () => {
     return data
 }
 
-export const fetchSubCategoriesOrProducts = async (slug) => {
-    const {data} = await $host.get(`api/categories/${slug}`)
+export const fetchSubCategoriesOrProducts = async (slug, brandId, page, limit= 5) => {
+    const {data} = await $host.get(`api/categories/${slug}`, {params: {
+            brandId,
+            page,
+            limit,
+        }})
     return data
 }
 

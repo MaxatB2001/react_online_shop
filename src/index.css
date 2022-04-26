@@ -41,3 +41,9 @@ img, svg {
 html {
     scroll-behavior: smooth;
 }
+
+.borderBot {
+    border: none;
+    border-bottom: 1px solid #ced4da;
+    border-radius: 0;
+}

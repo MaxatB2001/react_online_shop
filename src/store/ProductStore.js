@@ -10,6 +10,9 @@ export default class ProductStore {
         this._selectedCategory = {};
         this._selectedBrand = {};
         this._reviews = [];
+        this._page = 1;
+        this._totalCount = 0;
+        this._limit = 2;
         makeAutoObservable(this)
     }
 
@@ -34,6 +37,7 @@ export default class ProductStore {
     }
 
     setSelectedBrand(brand) {
+        this.setPage(1)
         this._selectedBrand = brand;
     }
 
@@ -43,6 +47,26 @@ export default class ProductStore {
 
     setProducts(products) {
         this._products = products;
+    }
+
+    setPage(page) {
+        this._page = page;
+    }
+
+    setTotalCount(count) {
+        this._totalCount = count;
+    }
+
+    get page() {
+        return this._page;
+    }
+
+    get totalCount() {
+        return this._totalCount;
+    }
+
+    get limit() {
+        return this._limit;
     }
 
     get parentCategories() {

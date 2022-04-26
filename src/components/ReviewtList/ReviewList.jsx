@@ -12,7 +12,6 @@ const ReviewList = observer(({productProp}) => {
     useEffect(() => {
         fetchComments(productProp.id).then(data => product.setReviews(data))
     }, [])
-    console.log(product.reviews)
     return (
         <div className="mt-5">
             <CreateReview productProp={productProp} show={show} handleClose={() => setShow(false)}/>

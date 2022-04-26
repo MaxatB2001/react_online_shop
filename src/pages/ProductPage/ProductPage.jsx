@@ -9,6 +9,7 @@ import {Context} from "../../index";
 import {CART_ROUTE} from "../../utils/consts";
 
 const ProductPage = observer(() => {
+    console.log('re')
     const navigate = useNavigate()
     const [product, setProduct] = useState({product_features: [], reviews: []})
     const {cart} = useContext(Context)

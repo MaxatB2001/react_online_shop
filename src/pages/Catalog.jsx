@@ -1,6 +1,4 @@
 import React, {useContext, useEffect} from 'react';
-import ProductPage from "./ProductPage/ProductPage";
-import CategoryItem from "../components/CategoryItem/CategoryItem";
 import {Container} from "react-bootstrap";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
@@ -13,24 +11,27 @@ const Catalog = observer(() => {
     const {product} = useContext(Context)
     const {slug} = useParams()
     useEffect(() => {
-        fetchSubCategoriesOrProducts(slug)
+        fetchSubCategoriesOrProducts(slug, null, 1, 2)
             .then(data => {
                 if (data.products) {
-                    product.setProducts(data.products)
+                    console.log(data.products)
+                    product.setProducts(data.products.rows)
+                    product.setTotalCount(data.products.count)
                     product.setCategories([])
                 } else {
                     product.setCategories(data.subs)
+                    console.log(data)
                     product.setProducts([])
                 }
             })
-    }, [slug])
+    }, [slug, product])
     return (
         <Container>
             {product.categories.length > 0
                 ?
                 <CategoriesList/>
                 :
-                <ProductsList/>
+                <ProductsList slug={slug}/>
             }
         </Container>
     );
