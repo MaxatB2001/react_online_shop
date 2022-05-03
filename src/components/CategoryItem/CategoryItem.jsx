@@ -5,13 +5,15 @@ import {CATALOG_ROUTE} from "../../utils/consts";
 
 const CategoryItem = ({category}) => {
     return (
-        <div className={classes.category_card}>
+        <div className={classes.categoryCard}>
+            <div className={classes.categoryCard__hov}>
             <Link to={CATALOG_ROUTE + '/' + category.slug}>
-            <img className={classes.category_card__image} src={process.env.REACT_APP_API_URL + '/' + category.image}/>
-            <div>
-                <p>{category.title}</p>
+            <img className={classes.categoryCard__image} src={process.env.REACT_APP_API_URL + '/' + category.image}/>
+            <div className={classes.categoryCard__text}>
+                <span>{category.title}</span> <span  className="bi bi-arrow-right"></span>
             </div>
             </Link>
+            </div>
         </div>
     );
 };

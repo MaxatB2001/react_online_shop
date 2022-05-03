@@ -4,7 +4,6 @@ import {Context} from "../../index";
 
 const CheckoutPage = () => {
     const {cart} =  useContext(Context)
-    const [userPlace, setUserPlace] = useState({city: "", street: "", house: "", structure: "", frame: "", entrance: "", floor: "", flat: ""})
     return (
         <Container>
             <Row className={"mt-4"}>

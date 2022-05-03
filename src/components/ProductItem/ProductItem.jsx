@@ -9,7 +9,6 @@ import {countAvgStars} from "../../utils/helpers";
 const ProductItem = ({product}) => {
     const {cart} = useContext(Context)
     const starAvg = useMemo(() => countAvgStars(product.reviews), [product])
-    console.log(product)
     const navigate = useNavigate()
     const addToCart = () => {
         const item = {
@@ -27,7 +26,7 @@ const ProductItem = ({product}) => {
                 <span className={classes.product__description__bookmark}><i className="bi bi-bookmark-plus"></i></span>
                 <h2 style={{marginBottom: "5px"}}>{product.name}</h2>
                 <i style={{color: "orange"}} className="bi bi-star-fill"></i>
-                <span style={{marginLeft: "5px"}}>{starAvg.toFixed(2)}</span>
+                <span style={{marginLeft: "5px"}}>{starAvg}</span>
                 <i style={{marginLeft: "15px"}} className="bi bi-chat"></i>
                 <span style={{marginLeft: "5px"}}>{product.reviews.length}</span>
                 <span style={{marginLeft: "12px"}}>Код товара: {product.id}</span>

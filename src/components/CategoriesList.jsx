@@ -5,7 +5,7 @@ import CategoryItem from "./CategoryItem/CategoryItem";
 const CategoriesList = () => {
     const {product} = useContext(Context)
     return (
-        <div className="d-flex flex-wrap justify-content-between align-items-center mt-3">
+        <div className="grid-wrapper">
             {product.categories.map(c =>
                 <CategoryItem category={c} key={c.id}/>
             )}

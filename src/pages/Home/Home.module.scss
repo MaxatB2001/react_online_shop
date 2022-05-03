@@ -1,1 +1,25 @@
+.gridWrapper {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  grid-template-rows: repeat(2,1fr);
+  grid-gap: 10px;
+}
+
+.popularCategoriesTab,
+.newCategoriesTab {
+  font-size: 32px;
+  color: #B3B3B7;
+  &.active {
+    font-weight: 700;
+    color: black;
+  }
+}
+
+.middle {
+  color: #B3B3B7;
+  font-size: 32px;
+  margin: 0 20px;
+}
+
 

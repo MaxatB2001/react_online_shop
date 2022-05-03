@@ -1,11 +1,23 @@
-.category_card {
+.categoryCard {
   cursor: pointer;
-  flex-basis: 24%;
-  box-shadow: 0 0 8px 0 #e0e0e0;
+  box-shadow: 0 5px 25px 0 #e0e0e0;
   padding: 16px;
   text-align: center;
-  margin-bottom: 16px;
   &__image {
-    width: 140px;
+    max-width: 140px;
+    max-height: 90px;
+    width: 100%;
+    height: 100%;
+  }
+  &__text {
+    margin-top: 5px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+}
+
+.categoryCard:hover {
+  span {
+    color: #ff8f00;
   }
 }

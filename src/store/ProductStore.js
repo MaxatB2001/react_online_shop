@@ -13,6 +13,7 @@ export default class ProductStore {
         this._page = 1;
         this._totalCount = 0;
         this._limit = 2;
+        this._watchedRecently = [];
         makeAutoObservable(this)
     }
 
@@ -99,5 +100,30 @@ export default class ProductStore {
 
     get allCategories() {
         return this._allCategories;
+    }
+
+    initialWatchedRecently() {
+        if (localStorage.getItem('watchedRecently')) {
+            this._watchedRecently = JSON.parse(localStorage.getItem('watchedRecently'));
+        } else {
+            localStorage.setItem('watchedRecently', JSON.stringify(this._watchedRecently))
+        }
+    }
+
+    updateWatchedRecently() {
+        localStorage.setItem('watchedRecently', JSON.stringify(this._watchedRecently))
+    }
+
+    get watchedRecently() {
+        return this._watchedRecently
+    }
+
+    addToWatchedRecently(product) {
+        const exist = this._watchedRecently.filter(p => p.id === product.id)
+
+        if (!exist.length) {
+            this._watchedRecently.push(product)
+            this.updateWatchedRecently()
+        }
     }
 }

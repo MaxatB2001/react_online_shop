@@ -8,6 +8,8 @@ import {observer} from "mobx-react-lite";
 import {check} from "./queries/UserApi";
 import {Spinner} from "react-bootstrap";
 import {fetchParentCategories} from "./queries/ProductsApi";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const App = observer(() => {
     const {user} = useContext(Context)
@@ -25,6 +27,7 @@ const App = observer(() => {
                 user.setIsAdmin(true)
             }
         }).finally(() => setIsLoading(false))
+        product.initialWatchedRecently()
         cart.initial()
     }, [])
 

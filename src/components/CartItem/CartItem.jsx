@@ -5,7 +5,6 @@ import {Button, ButtonGroup} from "react-bootstrap";
 import {Context} from "../../index";
 
 const CartItem = observer(({item}) => {
-    console.log('ren')
     const {cart} = useContext(Context)
     const deleteFromCart = (item) => {
         cart.removeFromCart(item)

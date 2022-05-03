@@ -10,6 +10,7 @@ const ProductsList = observer(({slug}) => {
     useEffect(() => {
         fetchSubCategoriesOrProducts(slug, product.selectedBrand.id, product.page, 2)
             .then(data => {
+                // console.log(data)
                 product.setProducts(data.products.rows)
                 product.setTotalCount(data.products.count)
             })

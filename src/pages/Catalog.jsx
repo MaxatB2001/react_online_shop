@@ -20,7 +20,6 @@ const Catalog = observer(() => {
                     product.setCategories([])
                 } else {
                     product.setCategories(data.subs)
-                    console.log(data)
                     product.setProducts([])
                 }
             })

@@ -9,42 +9,43 @@ import {Context} from "../../index";
 import {CART_ROUTE} from "../../utils/consts";
 
 const ProductPage = observer(() => {
-    console.log('re')
+    const {product} = useContext(Context)
     const navigate = useNavigate()
-    const [product, setProduct] = useState({product_features: [], reviews: []})
+    const {slug} = useParams()
+    const [productOnPage, setProductOnPage] = useState({product_features: [], reviews: []})
     const {cart} = useContext(Context)
     const [selectedNav, setSelectedNav] = useState("features")
-    const {slug} = useParams()
-    const isProductInCart = cart.checkProductInCart(product)
+    const isProductInCart = cart.checkProductInCart(productOnPage)
     const addToCart = () => {
         const item = {
-            product,
+            product: productOnPage,
             quantity: 1,
         }
         cart.addToCart(item)
     }
     useEffect(() => {
         fetchProduct(slug).then(data => {
-            setProduct(data)
+            setProductOnPage(data)
+            product.addToWatchedRecently(data)
         })
     }, [])
-    const starAvg = useMemo(() => countAvgStars(product.reviews), [product])
+    const starAvg = useMemo(() => countAvgStars(productOnPage.reviews), [productOnPage])
     return (
         <Container className="mt-4">
             <Row>
-                <Col md={6}><img src={process.env.REACT_APP_API_URL + product.image} alt={"alt"}/></Col>
+                <Col md={6}><img src={process.env.REACT_APP_API_URL + productOnPage.image} alt={"alt"}/></Col>
                 <Col md={6}>
-                    <h1>{product.name}</h1>
+                    <h1>{productOnPage.name}</h1>
                     <i style={{color: "orange"}} className="bi bi-star-fill"></i>
-                    <span style={{marginLeft: "5px"}}>{starAvg.toFixed(2)}</span>
+                    <span style={{marginLeft: "5px"}}>{starAvg}</span>
                     <i style={{marginLeft: "15px"}} className="bi bi-chat"></i>
-                    <span style={{marginLeft: "5px"}}>{product.reviews.length}</span>
-                    <span style={{marginLeft: "12px"}}>Код товара: {product.id}</span>
+                    <span style={{marginLeft: "5px"}}>{productOnPage.reviews.length}</span>
+                    <span style={{marginLeft: "12px"}}>Код товара: {productOnPage.id}</span>
                     <div style={{marginTop: "10px"}}>
-                        <span style={{fontWeight: '600', fontSize: "29px"}}>{product.price}</span>
+                        <span style={{fontWeight: '600', fontSize: "29px"}}>{productOnPage.price}</span>
                         <span style={{color: "#b3b3b7", fontSize: "29px", marginLeft: "5px"}}>₽</span>
                     </div>
-                    {product.avaliable
+                    {productOnPage.avaliable
                         ?
                         <p>В наличии</p>
                         :
@@ -79,10 +80,10 @@ const ProductPage = observer(() => {
                     ?
                 <div className="d-flex justify-content-center">
                     <div>
-                    <h5 style={{fontWeight: 600}} className="mt-4">Основные характеристики {product.name}</h5>
+                    <h5 style={{fontWeight: 600}} className="mt-4">Основные характеристики {productOnPage.name}</h5>
                     <table>
                         <tbody>
-                        {product.product_features.map(f =>
+                        {productOnPage.product_features.map(f =>
                         <tr key={f.id}>
                             <td>{f.title}</td>
                             <td><span style={{marginLeft: "100px"}}>{f.description}</span></td>
@@ -95,7 +96,7 @@ const ProductPage = observer(() => {
                     :
                     selectedNav === "reviews"
                     ?
-                    <ReviewList productProp={product}/>
+                    <ReviewList productProp={productOnPage}/>
                     :
                     selectedNav === "same"
                     ?

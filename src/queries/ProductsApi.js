@@ -24,6 +24,16 @@ export const fetchAllCategories = async () => {
     return data
 }
 
+export const fetchPopularCategories = async () => {
+    const {data} = await $host.get('api/categories/popular')
+    return data
+}
+
+export const fetchLatestCategories = async () => {
+    const {data} = await $host.get('api/categories/latest')
+    return data
+}
+
 export const fetchBrands = async () => {
     const {data} = await $host.get('api/brand')
     return data
@@ -51,7 +61,6 @@ export const createComment = async (slug, review) => {
 
 export const fetchComments = async (id) => {
     const {data} = await $host.get(`api/product/reviews/${id}`)
-    console.log(data)
     return data;
 }
 
