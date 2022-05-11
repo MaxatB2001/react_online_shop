@@ -5,13 +5,13 @@ import {Context} from "../index";
 import {useParams} from "react-router-dom";
 import {fetchSubCategoriesOrProducts} from "../queries/ProductsApi";
 import CategoriesList from "../components/CategoriesList";
-import ProductsList from "../components/ProductsList";
+import ProductsList from "../components/ProductList/ProductsList";
 
 const Catalog = observer(() => {
     const {product} = useContext(Context)
     const {slug} = useParams()
     useEffect(() => {
-        fetchSubCategoriesOrProducts(slug, null, 1, 2)
+        fetchSubCategoriesOrProducts(slug, null, 1, product.limit)
             .then(data => {
                 if (data.products) {
                     console.log(data.products)

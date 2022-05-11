@@ -12,7 +12,7 @@ export default class ProductStore {
         this._reviews = [];
         this._page = 1;
         this._totalCount = 0;
-        this._limit = 2;
+        this._limit = 4;
         this._watchedRecently = [];
         makeAutoObservable(this)
     }

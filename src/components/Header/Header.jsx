@@ -15,7 +15,7 @@ const Header = observer(() => {
     return (
         <Navbar bg="light" variant="light">
             <Container>
-                <NavLink to={HOME_ROUTE}>Navbar</NavLink>
+                <NavLink style={{fontWeight: 600, fontSize: "20px"}} to={HOME_ROUTE}>Магазин</NavLink>
                 <Button onClick={() => catalog.setShowCatalog(!catalog.showCatalog)} variant="outline-warning">Каталог товаров</Button>
                 <Form className="d-flex">
                     <FormControl

@@ -10,7 +10,6 @@ const MyPagination = observer(() => {
 
     for (let i = 1; i <= pageCount; i++) {
         pages.push(i)
-        console.log('r')
     }
 
     return (

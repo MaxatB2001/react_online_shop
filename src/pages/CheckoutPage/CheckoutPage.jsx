@@ -1,9 +1,40 @@
 import React, {useContext, useState} from 'react';
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import {Context} from "../../index";
+import {createOrder} from "../../queries/OrderApi";
+import {useNavigate} from "react-router-dom";
 
 const CheckoutPage = () => {
+    const navigate = useNavigate()
+    const {user} = useContext(Context)
+    const addressSting = (obj) => {
+        let string = ''
+        for (let key in obj) {
+            string += ' ' + obj[key]
+        }
+        return string
+    }
     const {cart} =  useContext(Context)
+    const [address, setAddress] = useState({ city: '', street: '', home: '', building: '', corps: '', entrance: '', floor: '', apartment: '' })
+    const [comment, setComment] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [phone, setPhone] = useState('+7')
+    const [email, setEmail] = useState('')
+    const order = {
+        address: addressSting(address),
+        comment,
+        firstName,
+        lastName,
+        phone,
+        email,
+        paidAmount: cart.cartTotalPrice(),
+        userId: user.user.id,
+        items: JSON.stringify(cart.items)
+    }
+    const submitOrder = () => {
+        createOrder(order).then(navigate('/home'))
+    }
     return (
         <Container>
             <Row className={"mt-4"}>
@@ -19,12 +50,16 @@ const CheckoutPage = () => {
                         <Form.Label>Город</Form.Label>
                         <Form.Control
                             className={"borderBot"}
+                            value={address.city}
+                            onChange={e => setAddress({ ...address, city: e.target.value })}
                         />
                     </Col>
                     <Col md={6}>
                         <Form.Label>Улица</Form.Label>
                         <Form.Control
                             className={"borderBot"}
+                            value={address.street}
+                            onChange={e => setAddress({ ...address, street: e.target.value })}
                         />
                     </Col>
                     </Row>
@@ -34,18 +69,24 @@ const CheckoutPage = () => {
                         <Form.Label>Дом</Form.Label>
                         <Form.Control
                             className={"borderBot"}
+                            value={address.home}
+                            onChange={e => setAddress({ ...address, home: e.target.value })}
                         />
                     </Col>
                     <Col md={4}>
                         <Form.Label>Стоение</Form.Label>
                         <Form.Control
                             className={"borderBot"}
+                            value={address.building}
+                            onChange={e => setAddress({ ...address, building: e.target.value })}
                         />
                     </Col>
                     <Col md={4}>
                         <Form.Label>Корпус</Form.Label>
                         <Form.Control
                             className={"borderBot"}
+                            value={address.corps}
+                            onChange={e => setAddress({ ...address, corps: e.target.value })}
                         />
                     </Col>
                 </Row>
@@ -54,18 +95,24 @@ const CheckoutPage = () => {
                             <Form.Label>Подъезд</Form.Label>
                             <Form.Control
                                 className={"borderBot"}
+                                value={address.entrance}
+                                onChange={e => setAddress({ ...address, entrance: e.target.value })}
                             />
                         </Col>
                         <Col md={4}>
                             <Form.Label>Этаж</Form.Label>
                             <Form.Control
                                 className={"borderBot"}
+                                value={address.floor}
+                                onChange={e => setAddress({ ...address, floor: e.target.value })}
                             />
                         </Col>
                         <Col md={4}>
                             <Form.Label>Квартира</Form.Label>
                             <Form.Control
                                 className={"borderBot"}
+                                value={address.apartment}
+                                onChange={e => setAddress({ ...address, apartment: e.target.value })}
                             />
                         </Col>
                     </Row>
@@ -75,6 +122,8 @@ const CheckoutPage = () => {
                             <Form.Control
                                 as="textarea"
                                 rows={2}
+                                value={comment}
+                                onChange={e => setComment(e.target.value)}
                                 className={"borderBot"}
                             />
                         </Col>
@@ -86,12 +135,16 @@ const CheckoutPage = () => {
                         <Col md={6}>
                             <Form.Label>Имя</Form.Label>
                             <Form.Control
+                                value={firstName}
+                                onChange={e => setFirstName(e.target.value)}
                                 className={"borderBot"}
                             />
                         </Col>
                         <Col md={6}>
                             <Form.Label>Фамилия</Form.Label>
                             <Form.Control
+                                value={lastName}
+                                onChange={e => setLastName(e.target.value)}
                                 className={"borderBot"}
                             />
                         </Col>
@@ -101,7 +154,8 @@ const CheckoutPage = () => {
                             <Form.Label>Телефон</Form.Label>
                             <Form.Control
                                 type="tel"
-                                placeholder={"+7"}
+                                value={phone}
+                                onChange={e => setPhone(e.target.value)}
                                 className={"borderBot"}
                             />
                         </Col>
@@ -113,6 +167,8 @@ const CheckoutPage = () => {
                     <Col md={6}>
                         <Form.Label>email для чека</Form.Label>
                         <Form.Control
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
                             className={"borderBot"}
                         />
                     </Col>
@@ -130,7 +186,7 @@ const CheckoutPage = () => {
                     </Row>
                     <Row>
                         <Col md={5}>
-                            <Button variant={"warning"} style={{color: "white"}} size={"lg"}>Оплатить</Button>
+                            <Button onClick={submitOrder} variant={"warning"} style={{color: "white"}} size={"lg"}>Оплатить</Button>
                         </Col>
                     </Row>
                 </Row>

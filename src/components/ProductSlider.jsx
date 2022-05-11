@@ -40,7 +40,6 @@ export default class ProductSlider extends Component {
         };
         return (
             <div>
-                <h2> Responsive </h2>
                 <Slider {...settings}>
                     {this.props.products.map(p =>
                         <VerticalProductCard product={p}/>
