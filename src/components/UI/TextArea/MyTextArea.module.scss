@@ -1,0 +1,12 @@
+.myTextArea {
+  width: 100%;
+  border: 1px solid #C9C9C9;
+  padding: 10px;
+  font-weight: 300;
+}
+
+.myTextArea:focus {
+  outline: none;
+  border: 1px solid #fe7200;
+
+}

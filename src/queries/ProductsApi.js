@@ -7,6 +7,7 @@ export const createCategory = async (category) => {
 
 export const fetchParentCategories = async () => {
     const {data} = await $host.get('api/categories')
+    console.log(data)
     return data
 }
 
@@ -36,6 +37,7 @@ export const fetchLatestCategories = async () => {
 
 export const fetchBrands = async () => {
     const {data} = await $host.get('api/brand')
+    console.log(data)
     return data
 }
 
@@ -66,6 +68,7 @@ export const fetchComments = async (id) => {
 
 export const fetchStars = async () => {
     const {data} = await $host.get('api/product/review/star')
+    console.log(data)
     return data;
 }
 

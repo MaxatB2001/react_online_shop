@@ -1,0 +1,13 @@
+.ratingStars {
+  margin-bottom: 10px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.starIcon {
+  cursor: pointer;
+  transition: color 200ms;
+  font-size: 40px;
+}

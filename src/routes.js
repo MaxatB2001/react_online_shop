@@ -9,7 +9,7 @@ import {
     REGISTRATION_ROUTE
 } from "./utils/consts";
 import Catalog from "./pages/Catalog";
-import Cart from "./pages/Cart";
+import Cart from "./pages/Cart/Cart";
 import Auth from "./pages/Auth/Auth";
 import Home from "./pages/Home/Home";
 import ProductPage from "./pages/ProductPage/ProductPage";

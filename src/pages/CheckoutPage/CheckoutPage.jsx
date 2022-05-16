@@ -8,10 +8,7 @@ const CheckoutPage = () => {
     const navigate = useNavigate()
     const {user} = useContext(Context)
     const addressSting = (obj) => {
-        let string = ''
-        for (let key in obj) {
-            string += ' ' + obj[key]
-        }
+        let string = `г ${address.city}, ул ${address.street}, д ${address.home}, стр ${address.building}, к ${address.corps}, подъезд ${address.entrance}, ${address.floor} этаж, кв ${address.apartment}`
         return string
     }
     const {cart} =  useContext(Context)
@@ -33,7 +30,7 @@ const CheckoutPage = () => {
         items: JSON.stringify(cart.items)
     }
     const submitOrder = () => {
-        createOrder(order).then(navigate('/home'))
+        createOrder(order).then(res => console.log(res))
     }
     return (
         <Container>

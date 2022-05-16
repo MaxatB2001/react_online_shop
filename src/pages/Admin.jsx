@@ -9,15 +9,14 @@ const Admin = () => {
     const [showBrandModal, setShowBrandModal] = useState(false)
     const [showProductModal, setShowProductModal] = useState(false)
     return (
-        <Container className="d-flex flex-column">
-            <h2 className="mt-4 d-flex justify-content-center">Панель администратора</h2>
+        <div className="d-flex flex-column">
             <Button size={"lg"} variant={"outline-warning"} className="mt-4" onClick={() => setShowCategoryModal(true)}>Добавить категорию</Button>
             <Button size={"lg"} variant={"outline-warning"} className="mt-4" onClick={() => setShowBrandModal(true)}>Добавить бренд</Button>
             <Button size={"lg"} variant={"outline-warning"} className="mt-4" onClick={() => setShowProductModal(true)}>Добавить товар</Button>
             <CreateBrand show={showBrandModal} onHide={() => setShowBrandModal(false)}/>
             <CreateCategory show={showCategoryModal} onHide={() => setShowCategoryModal(false)}/>
             <CreateProduct show={showProductModal} onHide={() => setShowProductModal(false)}/>
-        </Container>
+        </div>
     );
 };
 

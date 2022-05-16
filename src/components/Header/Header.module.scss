@@ -1,61 +1,84 @@
 @import "../../assets/variables.scss";
 
+
 .header {
+  height: 80px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 5px 25px 0 #e0e0e0;
+}
+
+.wrapper {
   display: flex;
   align-items: center;
-  height: 90px;
-}
-
-.image {
-  flex: 20%;
-  margin-right: 10px;
-}
-
-.imageLink {
-  text-align: center;
-}
-
-.headerSearch {
-  flex: 60%;
-  flex-grow: 1;
   width: 100%;
+}
+
+.buttonIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.middle {
+  flex: 7;
+}
+
+.right {
+  flex: 3;
 }
 
 .search {
-  height: 30px;
+  position: relative;
+  display: flex;
   width: 100%;
-  &__label {
-    height: 100%;
-    display: flex;
-    width: 100%;
-  }
-  &__icon {
-
-  }
+  align-items: center;
+  background-color: white;
   &__input {
-    border-bottom: solid 1px #dfdfe1;
-    font-size: 17px;
-    font-weight: 500;
     width: 100%;
+    border-bottom: 1px solid #dfdfe1;
+    padding: 1px 53px 5px 2px;
   }
   &__input:focus {
     outline: none;
-    border-bottom: solid 1px #ef6c00;
+    border-bottom: 1px solid #fe7200;
   }
-  &__input::placeholder {
-    color: rgba(0, 0, 0, 0.225);
+  &__icon {
+    position: absolute;
+    cursor: pointer;
+    color: #b3b3b7;
+    right: 0;
+  }
+  &__icon:hover {
+    color: #fe7200;
   }
 }
-
-.headerLinks {
-  margin-left: auto;
+.left {
+  margin-right: 40px;
+  flex: 2;
 }
 
+.logoWrapper {
+  margin-right: 40px;
+  cursor: pointer;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
 .navHeader {
 
   &__list {
     display: flex;
     margin-bottom: 0px;
+    justify-content: end;
   }
   &__link {
     margin-left: 25px;
@@ -76,20 +99,4 @@
 .link:hover {
   display: flex;
   filter: invert(42%) sepia(86%) saturate(1629%) hue-rotate(5deg) brightness(97%) contrast(103%);
-}
-
-.inp:focus {
-  outline: none;
-  border-bottom: solid 1px #ef6c00;
-}
-
-.inp {
-  border-bottom: solid 1px #dfdfe1;
-  font-size: 17px;
-  font-weight: 500;
-  width: 100%;
-}
-
-.customClass {
-  color: orange;
 }

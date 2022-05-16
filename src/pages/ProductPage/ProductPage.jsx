@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useMemo, useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
-import {fetchProduct} from "../../queries/ProductsApi";
+import {fetchComments, fetchProduct} from "../../queries/ProductsApi";
 import {Button, Col, Container, Nav, Row} from "react-bootstrap";
 import ReviewList from "../../components/ReviewtList/ReviewList";
 import {countAvgStars} from "../../utils/helpers";
@@ -24,22 +24,26 @@ const ProductPage = observer(() => {
         cart.addToCart(item)
     }
     useEffect(() => {
-        fetchProduct(slug).then(data => {
+        const fetchData = async () => {
+            const data = await fetchProduct(slug)
             setProductOnPage(data)
             product.addToWatchedRecently(data)
-        })
+            const reviews = await fetchComments(data.id)
+            product.setReviews(reviews)
+        }
+        fetchData()
     }, [])
-    const starAvg = useMemo(() => countAvgStars(productOnPage.reviews), [productOnPage])
+    const starAvg = useMemo(() => countAvgStars(product.reviews), [product.reviews])
     return (
         <Container className="mt-4">
             <Row>
-                <Col md={6}><img src={process.env.REACT_APP_API_URL + productOnPage.image} alt={"alt"}/></Col>
+                <Col md={6}><img style={{width: "400px", height: "400px", objectFit: "contain"}} src={process.env.REACT_APP_API_URL + productOnPage.image} alt={"alt"}/></Col>
                 <Col md={6}>
                     <h1>{productOnPage.name}</h1>
                     <i style={{color: "orange"}} className="bi bi-star-fill"></i>
                     <span style={{marginLeft: "5px"}}>{starAvg}</span>
                     <i style={{marginLeft: "15px"}} className="bi bi-chat"></i>
-                    <span style={{marginLeft: "5px"}}>{productOnPage.reviews.length}</span>
+                    <span style={{marginLeft: "5px"}}>{product.reviews.length}</span>
                     <span style={{marginLeft: "12px"}}>Код товара: {productOnPage.id}</span>
                     <div style={{marginTop: "10px"}}>
                         <span style={{fontWeight: '600', fontSize: "29px"}}>{productOnPage.price}</span>

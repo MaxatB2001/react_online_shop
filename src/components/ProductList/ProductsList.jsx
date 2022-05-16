@@ -9,7 +9,7 @@ import classes from "./ProductList.module.scss"
 const ProductsList = observer(({slug}) => {
     const {product} = useContext(Context)
     useEffect(() => {
-        fetchSubCategoriesOrProducts(slug, product.selectedBrand.id, product.page, 2)
+        fetchSubCategoriesOrProducts(slug, product.selectedBrand.id, product.page, product.limit)
             .then(data => {
                 product.setProducts(data.products.rows)
                 product.setTotalCount(data.products.count)

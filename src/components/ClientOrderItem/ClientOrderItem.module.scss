@@ -1,0 +1,61 @@
+.orderItem {
+  padding: 20px;
+  width: 100%;
+  background-color: rgb(245, 245, 246);
+  margin-bottom: 20px;
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__status {
+      font-size: 24px;
+      font-weight: 500;
+      color: #5d5d64;
+    }
+    &__id {
+      font-size: 19px;
+      font-weight: 500;
+      color: #5d5d64;
+    }
+    &__date {
+      font-size: 19px;
+      font-weight: 500;
+      color: #5d5d64;
+    }
+  }
+  &__bot {
+    margin-top: 25px;
+    border-top: 2px solid #dfdfe1;
+    display: flex;
+    padding: 20px 0 10px 0;
+
+    &__left {
+      display: flex;
+      flex: 6;
+      width: 100%;
+      justify-content: flex-start;
+      &__img {
+        max-width: 150px;
+        max-height: 150px;
+        margin-right: 5px;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    &__right {
+      padding-left: 10px;
+      width: 100%;
+      flex: 6;
+      &__button {
+        width: 100%;
+        background-color: white;
+        border: 3px solid #dfdfe1;
+        padding: 10px 0 10px 0;
+        font-weight: 500;
+        font-size: 20px;
+      }
+    }
+  }
+}

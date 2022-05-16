@@ -2,7 +2,6 @@ import React from 'react';
 import {observer} from "mobx-react-lite";
 
 const Review = observer(({review}) => {
-    console.log(review)
     return (
         <div>
             <span>{review.user.email}</span>

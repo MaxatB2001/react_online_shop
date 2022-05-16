@@ -1,0 +1,25 @@
+.button {
+  border: 1px solid #fe7200;
+  background-color: inherit;
+  color: #fe7200;
+  border-radius: 6px;
+  width: 100%;
+  cursor: pointer;
+  padding: 1px 10px 1px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .1s all ease-out;
+
+}
+
+.button:hover {
+  opacity: .9;
+  background-color: #fe7200;
+  color: #fff;
+}
+
+.m {
+  font-size: 15px;
+  height: 40px;
+}

@@ -42,7 +42,7 @@ export default class ProductSlider extends Component {
             <div>
                 <Slider {...settings}>
                     {this.props.products.map(p =>
-                        <VerticalProductCard product={p}/>
+                        <VerticalProductCard key={p.id} product={p}/>
                     )}
                 </Slider>
             </div>

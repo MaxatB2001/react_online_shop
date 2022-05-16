@@ -52,6 +52,12 @@ export default class CartStore {
         this.updateCart()
     }
 
+    setItemQuantity(item, value) {
+        item.quantity = value
+
+        this.updateCart()
+    }
+
     decrementQuantity(item) {
         item.quantity -= 1
 

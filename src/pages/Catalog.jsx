@@ -11,19 +11,18 @@ const Catalog = observer(() => {
     const {product} = useContext(Context)
     const {slug} = useParams()
     useEffect(() => {
-        fetchSubCategoriesOrProducts(slug, null, 1, product.limit)
+        fetchSubCategoriesOrProducts(slug, null, product.page, product.limit)
             .then(data => {
                 if (data.products) {
-                    console.log(data.products)
+                    product.setCategories([])
                     product.setProducts(data.products.rows)
                     product.setTotalCount(data.products.count)
-                    product.setCategories([])
                 } else {
-                    product.setCategories(data.subs)
                     product.setProducts([])
+                    product.setCategories(data.subs)
                 }
             })
-    }, [slug, product])
+    }, [slug])
     return (
         <Container>
             {product.categories.length > 0
