@@ -32,7 +32,7 @@ const Home = () => {
                 {showPopular
                     ?
                     popularCategories.map(cat =>
-                        <CategoryItem key={cat.id} category={cat}/>)
+                        <CategoryItem key={cat.id} category={cat.category}/>)
                     :
                         newCategories.map(cat =>
                             <CategoryItem key={cat.id} category={cat}/>

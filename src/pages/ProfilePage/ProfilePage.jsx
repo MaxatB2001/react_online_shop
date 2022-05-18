@@ -6,10 +6,14 @@ import ClientOrderItem from "../../components/ClientOrderItem/ClientOrderItem";
 import classes from './ProfilePage.module.scss'
 import Admin from "../Admin";
 import OrderList from "../../components/OrderList/OrderList";
+import AdminDashBoard from "../AdminDashBoard/AdminDashBoard";
+import {useNavigate} from "react-router-dom";
+import {ADMIN_DASHBOARD_ROUTE} from "../../utils/consts";
 
 const ProfilePage = () => {
     const {user} = useContext(Context)
     const [orders, setOrders] = useState([])
+    const navigate = useNavigate()
     const tabs = [
         {
           id: 0,
@@ -40,6 +44,12 @@ const ProfilePage = () => {
             title: 'Панель администратора',
             icon: 'bi bi-person-check-fill',
             tabValue: 'admin',
+        },
+        {
+            id: 5,
+            title: 'Статистика',
+            icon: 'bi bi-activity',
+            tabValue: 'stats',
         }
     ]
     const [activeTab, setActiveTab] = useState(tabs[0])
@@ -107,6 +117,7 @@ const ProfilePage = () => {
                         }
                         {activeTab.tabValue === 'admin' && <Admin/>}
                         {activeTab.tabValue === 'orders' && <OrderList orders={orders}/>}
+                        {activeTab.tabValue === 'stats' ? navigate(ADMIN_DASHBOARD_ROUTE) : ''}
                     </div>
             </div>
         </div>

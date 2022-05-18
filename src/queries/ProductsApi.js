@@ -27,6 +27,7 @@ export const fetchAllCategories = async () => {
 
 export const fetchPopularCategories = async () => {
     const {data} = await $host.get('api/categories/popular')
+    console.log(data)
     return data
 }
 

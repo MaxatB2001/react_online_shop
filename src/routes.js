@@ -1,5 +1,6 @@
 import Admin from "./pages/Admin";
 import {
+    ADMIN_DASHBOARD_ROUTE,
     ADMIN_ROUTE,
     CART_ROUTE,
     CATALOG_ROUTE, CHECKOUT_ROUTE,
@@ -15,6 +16,7 @@ import Home from "./pages/Home/Home";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
+import AdminDashBoard from "./pages/AdminDashBoard/AdminDashBoard";
 
 export const authRoutes = [
     {
@@ -24,6 +26,10 @@ export const authRoutes = [
     {
         path: PROFILE_ROUTE,
         Component: <ProfilePage/>
+    },
+    {
+        path: ADMIN_DASHBOARD_ROUTE,
+        Component: <AdminDashBoard/>
     }
 ]
 

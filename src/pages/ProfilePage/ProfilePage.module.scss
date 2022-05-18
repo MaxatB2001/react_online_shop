@@ -9,7 +9,7 @@ h2 {
 .profilePage {
   display: flex;
   &__sideBar {
-    flex: 4;
+    flex: 3;
     &__wrapper {
       padding: 20px;
     }
@@ -51,7 +51,7 @@ h2 {
     }
   }
   &__main {
-    flex: 8;
+    flex: 9;
     &__wrapper {
       padding: 20px 20px 20px 0;
     }

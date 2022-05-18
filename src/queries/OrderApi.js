@@ -9,3 +9,9 @@ export const getUserOrders = async id => {
     console.log(data)
     return data
 }
+
+export const getOrderdsByMonth = async () => {
+    const {data} = await $authHost.get('api/order')
+    console.log(data)
+    return data;
+}
