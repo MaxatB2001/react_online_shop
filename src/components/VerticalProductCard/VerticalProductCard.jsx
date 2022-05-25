@@ -28,9 +28,9 @@ const VerticalProductCard = ({product}) => {
                 </div>
                 <div className={styles.buttons}>
                     <Button style={{color: 'white'}} variant='warning'>В корзину</Button>
-                    <div className={styles.bookmark}>
-                        <i className="bi bi-bookmark"></i>
-                    </div>
+                        <div className={styles.bookmark}>
+                            <i className="bi bi-bookmark"></i>
+                        </div>
                 </div>
             </div>
         </div>

@@ -13,6 +13,7 @@ const Catalog = observer(() => {
     useEffect(() => {
         fetchSubCategoriesOrProducts(slug, null, product.page, product.limit)
             .then(data => {
+                console.log(data)
                 if (data.products) {
                     product.setCategories([])
                     product.setProducts(data.products.rows)

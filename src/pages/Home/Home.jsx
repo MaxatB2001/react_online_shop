@@ -1,12 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {fetchLatestCategories, fetchPopularCategories} from "../../queries/ProductsApi";
 import styles from './Home.module.scss'
 import CategoryItem from "../../components/CategoryItem/CategoryItem";
 import {Container} from "react-bootstrap";
-import WatchedRecently from "../../components/WatchedRecently/WatchedRecently";
-import ProductSlider from "../../components/ProductSlider";
+import Slider from "../../components/Slider/Slider";
+import {Context} from "../../index";
+
 
 const Home = () => {
+    const {product} = useContext(Context)
     const [showPopular, setShowPopular] = useState(true)
     const [popularCategories, setPopularCategories] = useState([])
     const [newCategories, setNewCategories] = useState([])
@@ -38,7 +40,9 @@ const Home = () => {
                             <CategoryItem key={cat.id} category={cat}/>
                 )}
             </div>
-            <WatchedRecently/>
+            <div className="mt-5">
+                <Slider products={product.watchedRecently}/>
+            </div>
         </Container>
     );
 };

@@ -8,6 +8,7 @@
 
 .popularCategoriesTab,
 .newCategoriesTab {
+  cursor: pointer;
   font-size: 32px;
   color: #B3B3B7;
   &.active {

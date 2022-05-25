@@ -1,10 +1,10 @@
 import classes from "./MyButton.module.scss"
 
-const MyButton = ({children, size, ...props}) => {
+const MyButton = ({children, size, variant,  ...props}) => {
     return (
         <button
             {...props}
-            className={`${classes.button} ${classes[size]}`}
+            className={`${classes.button} ${classes[size]} ${classes[variant]}`}
         >
             {children}
         </button>

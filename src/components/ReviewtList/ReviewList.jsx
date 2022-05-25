@@ -3,14 +3,13 @@ import {observer} from "mobx-react-lite";
 import {Button, Col, Row} from "react-bootstrap";
 import CreateReview from "../Modals/CreateReview/CreateReview";
 import {Context} from "../../index";
-import {fetchComments} from "../../queries/ProductsApi";
 import Review from "../Review/Review";
 
 const ReviewList = observer(({productProp}) => {
     const {product} = useContext(Context)
     const [show, setShow] = useState(false)
     return (
-        <div className="mt-5">
+        <div>
             <CreateReview productProp={productProp} showModal={show} setShowModal={setShow}/>
             <Row>
                 <Col md={3}>

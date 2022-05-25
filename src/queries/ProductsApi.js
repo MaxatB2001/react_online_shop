@@ -73,3 +73,15 @@ export const fetchStars = async () => {
     return data;
 }
 
+export const fetchAlikeProducts = async (categoryId, brandId, price) => {
+    const {data} = await $host.get('api/product/alike', {
+        params: {
+            categoryId,
+            brandId,
+            price,
+        }
+    })
+    console.log(data)
+    return data;
+}
+

@@ -1,0 +1,27 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #dfdfe1;
+  &__tab {
+    margin-left: 20px;
+    transition: all .1s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 19px;
+    cursor: pointer;
+    padding-bottom: 10px;
+    color: #5d5d64;
+    white-space: nowrap;
+    &__active {
+      font-weight: 600;
+      color: black;
+      border-bottom: 2px solid;
+    }
+  }
+  &__tab:first-child {
+    margin-left: 0;
+  }
+  &__tab:hover {
+    color: black;
+    font-weight: 500;
+  }
+}

@@ -1,5 +1,5 @@
 .dialog {
-  z-index: 999;
+  z-index: 1002;
   background: rgba(0, 0, 0, 0.5);
   top: 0;
   bottom: 0;
@@ -12,6 +12,7 @@
     background: white;
     padding: 40px;
     position: relative;
+    z-index:  1001;
     &__title {
       font-size: 24px;
       font-weight: 500;

@@ -1,23 +1,33 @@
 .stats_cards {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 10px;
+  width: 100%;
 }
 
 .stats_card {
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 20px;
+  margin: 20px 20px 0 0;
+  border-radius: 10px;
   padding: 30px;
   &__title {
-
+    font-size: 20px;
+    font-weight: 600;
   }
   &__price {
-
+    font-size: 17px;
+    font-weight: 500;
   }
 
+}
+
+.stats_card:last-child {
+  margin-right: 0;
 }

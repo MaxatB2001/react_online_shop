@@ -15,3 +15,14 @@ export const getOrderdsByMonth = async () => {
     console.log(data)
     return data;
 }
+
+export const getSumOrders = async () => {
+    const {data} = await $authHost.get('api/order/total')
+    console.log(data)
+    return data;
+}
+
+export const getProductOrdersMonthCount = async () => {
+    const {data} = await $host.get('api/product/monthSales')
+    return data;
+}
