@@ -33,7 +33,9 @@ const ProductsList = observer(({slug}) => {
                     </div>
 
             </div>
+            <div className={classes.pagination}>
             <MyPagination/>
+            </div>
         </div>
     );
 });

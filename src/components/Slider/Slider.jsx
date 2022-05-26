@@ -27,7 +27,7 @@ const Slider = ({products}) => {
     <Carousel responsive={responsive}>
         {
             products.map(p =>
-                <VerticalProductCard product={p}/>
+                <VerticalProductCard key={p.id} product={p}/>
             )
         }
     </Carousel>

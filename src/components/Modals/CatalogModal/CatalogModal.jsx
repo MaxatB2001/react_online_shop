@@ -27,7 +27,7 @@ const CatalogModal = observer(() => {
                                     }}
                             onClick={() => navigate(CATALOG_ROUTE + '/' + c.slug)}
                         >
-                            <i className={`bi bi-phone ${classes.parentCategories__item_icon}`}></i>
+                            <i className={`${c.icon} ${classes.parentCategories__item_icon}`}></i>
                             <span>{c.title}</span>
                         </div>
                     )}

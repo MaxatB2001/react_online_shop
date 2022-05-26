@@ -40,6 +40,7 @@ const Home = () => {
                             <CategoryItem key={cat.id} category={cat}/>
                 )}
             </div>
+            <div className={styles.resentlyWatched}>Вы недавно смотрели</div>
             <div className="mt-5">
                 <Slider products={product.watchedRecently}/>
             </div>

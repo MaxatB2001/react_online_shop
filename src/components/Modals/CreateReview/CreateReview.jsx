@@ -13,13 +13,17 @@ const CreateReview = observer(({showModal, setShowModal, productProp}) => {
     const {user, product} = useContext(Context)
     const [reviewText, setReviewText] = useState('')
     const [selectedStar, setSelectedStar] = useState(null)
+    console.log(selectedStar)
+    console.log(productProp.id)
+    console.log(user.user.id)
     const createReview = () => {
         const body = {
             message: reviewText,
             starId: selectedStar,
             productId: productProp.id,
+            userId: user.user.id,
         }
-        createComment(productProp.slug, body).then(data => {
+        createComment(body).then(data => {
             product.setReviews([...product.reviews, {...data, user: {email: user.user.email}}])
             setShowModal(false)
         })

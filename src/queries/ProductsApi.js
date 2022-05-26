@@ -57,8 +57,8 @@ export const fetchProduct = async (slug) => {
     return data
 }
 
-export const createComment = async (slug, review) => {
-    const {data} = await $authHost.post(`api/product/review/${slug}`, review)
+export const createComment = async (review) => {
+    const {data} = await $host.post(`api/product/review`, review)
     return data
 }
 
