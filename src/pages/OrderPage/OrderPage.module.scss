@@ -1,0 +1,66 @@
+.orderPage {
+  margin-top: 20px;
+}
+
+.title {
+  font-weight: 800;
+}
+
+.status {
+  margin-right: 20px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  max-width: 700px;
+  margin-top: 20px;
+  &__title {
+    margin-top: 20px;
+    font-weight: 800;
+    font-size: 20px;
+  }
+  &__left {
+  }
+
+  &__right {
+
+  }
+  &__itemTitle {
+    font-weight: 600;
+    font-size: 17px;
+  }
+}
+
+.hr {
+  margin: 20px 0 20px 0;
+}
+
+.items {
+  &__headers {
+    margin-top: 20px;
+    color: darkgray;
+    display: flex;
+  }
+  &__price {
+    padding: 0 10px 0 120px;
+  }
+  &__product {
+    padding-left: 30px;
+  }
+  &__space {
+    width: 100%;
+  }
+  &__quantity {
+  }
+  &__title {
+    font-weight: 800;
+    font-size: 20px;
+  }
+}
+
+.total {
+  margin-top: 20px;
+  font-size: 19px;
+  font-weight: 800;
+}

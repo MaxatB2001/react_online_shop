@@ -11,13 +11,16 @@ const Catalog = observer(() => {
     const {product} = useContext(Context)
     const {slug} = useParams()
     useEffect(() => {
-        fetchSubCategoriesOrProducts(slug, null, product.page, product.limit)
+        fetchSubCategoriesOrProducts(slug, JSON.stringify([]), product.page, product.limit, product.minPrice, product.maxPrice)
             .then(data => {
                 console.log(data)
                 if (data.products) {
                     product.setCategories([])
                     product.setProducts(data.products.rows)
                     product.setTotalCount(data.products.count)
+                    product.setMaxPrice(data.products.maxPrice.max)
+                    product.setMinPrice(data.products.minPrice.min)
+                    product.setBrands(data.category.brands)
                 } else {
                     product.setProducts([])
                     product.setCategories(data.subs)

@@ -3,7 +3,6 @@ h2 {
   font-size: 36px;
   line-height: 40px;
   font-weight: 600;
-  padding: 20px 0 0 0;
 }
 
 .profilePage {
@@ -57,6 +56,13 @@ h2 {
     }
     &__myProfile {
       display: flex;
+      &__exit {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 150px;
+      }
       &__info {
         flex: 6;
         background-color: rgb(245, 245, 246);

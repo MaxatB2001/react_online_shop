@@ -7,15 +7,16 @@ export const createCategory = async (category) => {
 
 export const fetchParentCategories = async () => {
     const {data} = await $host.get('api/categories')
-    console.log(data)
     return data
 }
 
-export const fetchSubCategoriesOrProducts = async (slug, brandId, page, limit= 5) => {
+export const fetchSubCategoriesOrProducts = async (slug, brandId, page, limit= 5, min, max) => {
     const {data} = await $host.get(`api/categories/${slug}`, {params: {
             brandId,
             page,
             limit,
+            min,
+            max
         }})
     return data
 }
@@ -69,7 +70,6 @@ export const fetchComments = async (id) => {
 
 export const fetchStars = async () => {
     const {data} = await $host.get('api/product/review/star')
-    console.log(data)
     return data;
 }
 
@@ -81,7 +81,16 @@ export const fetchAlikeProducts = async (categoryId, brandId, price) => {
             price,
         }
     })
-    console.log(data)
     return data;
 }
 
+export const fetchLatestProducts = async () => {
+    const {data} = await $host.get('api/product/latest')
+    return data;
+}
+
+export const searchProducts = async (query) => {
+    const {data} = await $host.get(`api/product/search/${query}`)
+    console.log(data)
+    return data;
+}

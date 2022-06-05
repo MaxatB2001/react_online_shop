@@ -1,12 +1,12 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import user_icon from '../../assets/icons/user-svgrepo-com.svg'
 import cart from '../../assets/icons/cart-svgrepo-com.svg'
 import bookmark from '../../assets/icons/bookmark-svgrepo-com.svg'
 import classes from './Header.module.scss'
-import {Link, NavLink, useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {Context} from "../../index";
 import logo from "../../assets/faceit.svg"
-import {CART_ROUTE, HOME_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE} from "../../utils/consts";
+import {CART_ROUTE, HOME_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE, SEARCH_PAGE_ROUTE} from "../../utils/consts";
 import {observer} from "mobx-react-lite";
 import MyButton from "../UI/Button/Button";
 
@@ -14,6 +14,7 @@ const   Header = observer(() => {
     const navigate = useNavigate()
     const {user} = useContext(Context)
     const {catalog} = useContext(Context)
+    const [search, setSearch] = useState('')
     return (
         <div className={classes.header}>
             <div className={`${classes.wrapper} Container`}>
@@ -28,8 +29,8 @@ const   Header = observer(() => {
                 </div>
                 <div className={classes.middle}>
                     <div className={classes.search}>
-                        <input placeholder="Поиск по товарам" className={classes.search__input}/>
-                        <i className={`bi bi-search ${classes.search__icon}`}></i>
+                        <input onChange={e => setSearch(e.target.value)} value={search} placeholder="Поиск по товарам" className={classes.search__input}/>
+                        <i onClick={() => navigate(SEARCH_PAGE_ROUTE + `/${search}`)} className={`bi bi-search ${classes.search__icon}`}></i>
                     </div>
                 </div>
                 <div className={classes.right}>

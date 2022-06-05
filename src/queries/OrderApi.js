@@ -26,3 +26,13 @@ export const getProductOrdersMonthCount = async () => {
     const {data} = await $host.get('api/product/monthSales')
     return data;
 }
+
+export const fetchManagerOrders = async () => {
+    const {data} = await $authHost.get('api/order/manager-orders')
+    return data;
+}
+
+export const fetchOrder = async (id) => {
+    const {data} = await $authHost.get(`api/order/single/${id}`)
+    return data;
+}

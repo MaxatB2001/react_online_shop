@@ -1,0 +1,16 @@
+.search {
+  display: flex;
+  &__left {
+    flex: 9.5;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  &__right {
+    flex: 2.5;
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 1.85rem;
+}

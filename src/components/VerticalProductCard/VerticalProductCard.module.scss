@@ -41,11 +41,17 @@
 }
 
 .name {
+  cursor: pointer;
   color: #262626;
-  font-size: 14px;
+  font-size: 17px;
+  font-weight: 300;
   margin-bottom: 9px;
   max-height: 53px;
   min-height: 53px;
+}
+
+.name:hover {
+  color: #ff8f00;
 }
 
 .price {

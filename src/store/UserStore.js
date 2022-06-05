@@ -31,4 +31,11 @@ export default class UserStore {
     get isAdmin() {
         return this._isAdmin
     }
+
+    logOut() {
+        this.setIsAuth(false)
+        this.setUser({})
+        this.setIsAdmin(false)
+        localStorage.removeItem('token')
+    }
 }

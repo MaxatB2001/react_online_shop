@@ -1,0 +1,72 @@
+.sortBar {
+  background-color: rgb(245, 245, 246);
+  width: 100%;
+  &_wrapper {
+    padding: 20px;
+  }
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &_left {
+      font-size: 24px;
+      line-height: 30px;
+      font-weight: 600;
+    }
+    &_right {
+
+    }
+  }
+  &_price {
+    margin-top: 10px;
+    display: flex;
+    &__input {
+      max-width: 100px;
+      outline: none;
+      border-radius: 3px;
+      padding: 5px;
+    }
+    &__dash {
+      font-size: 20px;
+      padding: 0 5px 0 5px;
+    }
+  }
+}
+
+.brandCheck {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+input[type=checkbox] {
+  visibility: hidden;
+}
+
+.check:hover input ~ .geekMark {
+  border: 1px solid black;
+}
+
+.check input:active ~ .geekMark {
+  background-color: red;
+}
+
+.check input ~ .geekMark {
+  background-color: gray;
+  border-radius: 3px;
+  color: white;
+  transition: all .3s ease-out;
+}
+
+.check input:checked ~ .geekMark {
+  background-color: orange;
+}
+

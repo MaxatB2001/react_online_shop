@@ -22,9 +22,11 @@ const App = observer(() => {
         check().then(data => {
             user.setUser(data)
             user.setIsAuth(true)
+            console.log(user)
             const admin = data.roles.filter(role => role.value === 'ADMIN')
-            if (admin) {
+            if (admin.length > 0) {
                 user.setIsAdmin(true)
+                console.log(user)
             }
         }).finally(() => setIsLoading(false))
         product.initialWatchedRecently()

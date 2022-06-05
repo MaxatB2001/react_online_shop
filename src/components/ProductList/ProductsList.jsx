@@ -5,16 +5,17 @@ import MyPagination from "../MyPagination";
 import {fetchSubCategoriesOrProducts} from "../../queries/ProductsApi";
 import {observer} from "mobx-react-lite";
 import classes from "./ProductList.module.scss"
+import FilterBar from "../FilterBar/FilterBar";
 
 const ProductsList = observer(({slug}) => {
     const {product} = useContext(Context)
     useEffect(() => {
-        fetchSubCategoriesOrProducts(slug, product.selectedBrand.id, product.page, product.limit)
+        fetchSubCategoriesOrProducts(slug, JSON.stringify(product.selectedBrands), product.page, product.limit, product.minPrice, product.maxPrice)
             .then(data => {
                 product.setProducts(data.products.rows)
                 product.setTotalCount(data.products.count)
             })
-    }, [product.page, product.selectedBrand,])
+    }, [product.page, product.selectedBrands, product.minPrice, product.maxPrice])
     return (
         <div>
             <div className={classes.main}>
@@ -24,12 +25,7 @@ const ProductsList = observer(({slug}) => {
             )}
             </div>
                     <div className={classes.main__right}>
-                        <div className={classes.main__right_wrapper}>
-                            <div className={classes.main__right__top}>
-                                <div className={classes.main__right__top_left}>Фильтры</div>
-                                <div className={classes.main__right__top_right}>очистить</div>
-                            </div>
-                        </div>
+                        <FilterBar/>
                     </div>
 
             </div>

@@ -9,11 +9,14 @@ export default class ProductStore {
         this._products = [];
         this._selectedCategory = {};
         this._selectedBrand = {};
+        this._selectedBrands = [];
         this._reviews = [];
         this._page = 1;
         this._totalCount = 0;
         this._limit = 4;
         this._watchedRecently = [];
+        this._minPrice = 0;
+        this._maxPrice = 0;
         makeAutoObservable(this)
     }
 
@@ -23,6 +26,19 @@ export default class ProductStore {
 
     setCategories(categories) {
         this._categories = categories;
+    }
+
+    setMaxPrice(price) {
+        this._maxPrice = price;
+    }
+
+    setMinPrice(price) {
+        this._minPrice = price;
+    }
+
+    setSelectedBrand(brand) {
+        this.setPage(1)
+        this._selectedBrand = brand;
     }
 
     setAllCategories(categories) {
@@ -37,9 +53,8 @@ export default class ProductStore {
         this._reviews = reviews;
     }
 
-    setSelectedBrand(brand) {
-        this.setPage(1)
-        this._selectedBrand = brand;
+    setSelectedBrands(brands) {
+        this._selectedBrands = brands;
     }
 
     setBrands(brands) {
@@ -56,6 +71,14 @@ export default class ProductStore {
 
     setTotalCount(count) {
         this._totalCount = count;
+    }
+
+    get maxPrice() {
+        return this._maxPrice;
+    }
+
+    get minPrice() {
+        return this._minPrice;
     }
 
     get page() {
@@ -94,8 +117,8 @@ export default class ProductStore {
         return this._selectedCategory;
     }
 
-    get selectedBrand() {
-        return this._selectedBrand;
+    get selectedBrands() {
+        return this._selectedBrands;
     }
 
     get allCategories() {
@@ -116,6 +139,10 @@ export default class ProductStore {
 
     get watchedRecently() {
         return this._watchedRecently
+    }
+
+    get selectedBrand() {
+        return this._selectedBrand;
     }
 
     addToWatchedRecently(product) {

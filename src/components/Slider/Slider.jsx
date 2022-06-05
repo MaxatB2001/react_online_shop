@@ -1,5 +1,6 @@
 import React from 'react';
 import Carousel from "react-multi-carousel";
+import classes from './Slider.module.scss'
 import "react-multi-carousel/lib/styles.css";
 import VerticalProductCard from "../VerticalProductCard/VerticalProductCard";
 const responsive = {
@@ -24,13 +25,13 @@ const responsive = {
 
 const Slider = ({products}) => {
     return (
-    <Carousel responsive={responsive}>
-        {
-            products.map(p =>
-                <VerticalProductCard key={p.id} product={p}/>
-            )
-        }
-    </Carousel>
+        <Carousel responsive={responsive}>
+            {
+                products.map(p =>
+                    <VerticalProductCard key={p.id} product={p}/>
+                )
+            }
+        </Carousel>
     );
 };
 

@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {fetchLatestCategories, fetchPopularCategories} from "../../queries/ProductsApi";
+import {fetchLatestCategories, fetchLatestProducts, fetchPopularCategories} from "../../queries/ProductsApi";
 import styles from './Home.module.scss'
 import CategoryItem from "../../components/CategoryItem/CategoryItem";
 import {Container} from "react-bootstrap";
@@ -12,8 +12,10 @@ const Home = () => {
     const [showPopular, setShowPopular] = useState(true)
     const [popularCategories, setPopularCategories] = useState([])
     const [newCategories, setNewCategories] = useState([])
+    const [latestProducts, setLatestProducts] = useState([])
     const popularCategoriesStyles = [styles.popularCategoriesTab]
     const newCategoriesStyles = [styles.newCategoriesTab]
+    console.log(latestProducts)
     if (showPopular) {
         popularCategoriesStyles.push(styles.active)
     } else {
@@ -22,6 +24,7 @@ const Home = () => {
     useEffect(() => {
         fetchPopularCategories().then(data => setPopularCategories(data))
         fetchLatestCategories().then(data => setNewCategories(data))
+        fetchLatestProducts().then(data => setLatestProducts(data))
     }, [])
     return (
         <Container>
@@ -39,6 +42,10 @@ const Home = () => {
                         newCategories.map(cat =>
                             <CategoryItem key={cat.id} category={cat}/>
                 )}
+            </div>
+            <div className={styles.resentlyWatched}>Новинки</div>
+            <div className="mt-5">
+                <Slider products={latestProducts}/>
             </div>
             <div className={styles.resentlyWatched}>Вы недавно смотрели</div>
             <div className="mt-5">
